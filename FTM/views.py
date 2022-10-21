@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
 
+
 class UserDetailAPI(APIView):
   authentication_classes = (TokenAuthentication,)
   permission_classes = (AllowAny,)

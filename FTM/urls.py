@@ -3,10 +3,10 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register("User",views.UserView)
-router.register("Profile", views.ProfileView)
-router.register("WorkExp", views.WorkExpView)
-router.register("Reviews", views.ReviewsView)
+router.register("user",views.UserView)
+router.register("profile", views.ProfileView)
+router.register("workExp", views.WorkExpView)
+router.register("reviews", views.ReviewsView)
 
 urlpatterns = [
     path('api/', include(router.urls), name = 'create-profile'),

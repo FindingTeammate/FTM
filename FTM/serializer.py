@@ -37,6 +37,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     user.save()
     return user
 
+
 class WorkExpSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkExp
