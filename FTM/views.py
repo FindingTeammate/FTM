@@ -11,13 +11,13 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
 
 
-class UserDetailAPI(APIView):
-  authentication_classes = (TokenAuthentication,)
-  permission_classes = (AllowAny,)
-  def get(self,request,*args,**kwargs):
-    user = User.objects.get(id=request.user.id)
-    serializer = UserSerializer(user)
-    return Response(serializer.data)
+# class UserDetailAPI(APIView):
+#   authentication_classes = (TokenAuthentication,)
+#   permission_classes = (AllowAny,)
+#   def get(self,request,*args,**kwargs):
+#     user = User.objects.get(id=request.user.id)
+#     serializer = UserSerializer(user)
+#     return Response(serializer.data)
 
 
 class RegisterUserAPIView(generics.CreateAPIView):
