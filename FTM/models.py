@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from datetime import date
+from django.template.backends import django
 
 User = get_user_model()
 
@@ -22,7 +23,7 @@ class WorkExp(models.Model):
     company_name = models.CharField(max_length=50)
     manager_name = models.CharField(max_length=50)
     start_date = models.DateField()
-    end_date = models.DateField(default=date.today())
+    end_date = models.DateField(default=django.utils.timezone.now())
     work_experience = models.TextField(blank=False)
 
     def __str__(self):
