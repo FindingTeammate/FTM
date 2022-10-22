@@ -24,7 +24,7 @@ class WorkExp(models.Model):
     company_name = models.CharField(max_length=50)
     manager_name = models.CharField(max_length=50)
     start_date = models.DateField()
-    end_date = models.DateField(default=date.today())
+    end_date = models.DateField()
     work_experience = models.TextField(blank=False)
 
     def __str__(self):
