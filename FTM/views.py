@@ -2,7 +2,6 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from .models import Profile, WorkExp, Reviews
 from .serializer import ProfileSerializer, WorkExpSerializer, ReviewsSerializer, UserSerializer, RegisterSerializer
-# from .serializer import CreateProfileSerializer, CreateReviewSerializer, CreateWorkExpSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
