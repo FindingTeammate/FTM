@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from datetime import date
 
+from django.template.backends import django
+
 User = get_user_model()
 
 
