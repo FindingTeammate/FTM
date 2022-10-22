@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -24,17 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2#sav=jmvbp)75fxa#)6k&vpq7-&3^v$#*v&u$(aak-=qd$07%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('NODE_ENV', 'production') != 'production'
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
-SECURE_HSTS_SECONDS = 100000
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_PRELOAD = True
-SECURE_REFERRER_POLICY = "origin"
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+ALLOWED_HOSTS = []
 
 
 # Application definition
