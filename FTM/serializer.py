@@ -3,6 +3,17 @@ from django.contrib.auth.models import User
 from .models import Profile, WorkExp, Reviews
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        print(attrs)
+        data = super().validate(attrs)
+        token = self.get_token(self.user)
+        data['id'] = self.user.id
+        data['user'] = str(self.user)
+        return data
 
 
 class RegisterSerializer(serializers.ModelSerializer):
