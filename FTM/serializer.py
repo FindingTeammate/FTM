@@ -3,6 +3,16 @@ from django.contrib.auth.models import User
 from .models import Profile, WorkExp, Reviews
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+#     def validate(self, attrs):
+#         print(attrs)
+#         data = super().validate(attrs)
+#         token = self.get_token(self.user)
+#         data['id'] =
+
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -15,7 +25,7 @@ class RegisterSerializer(serializers.ModelSerializer):
   password2 = serializers.CharField(write_only=True, required=True)
   class Meta:
     model = User
-    fields = ('username', 'password', 'password2',
+    fields = ('id','username', 'password', 'password2',
          'email', 'first_name', 'last_name')
     extra_kwargs = {
       'first_name': {'required': True},
@@ -31,7 +41,7 @@ class RegisterSerializer(serializers.ModelSerializer):
       username=validated_data['username'],
       email=validated_data['email'],
       first_name=validated_data['first_name'],
-      last_name=validated_data['last_name']
+      last_name=validated_data['last_name'],
     )
     user.set_password(validated_data['password'])
     user.save()

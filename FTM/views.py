@@ -8,7 +8,8 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
-
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 # class UserDetailAPI(APIView):
 #   authentication_classes = (TokenAuthentication,)
@@ -19,8 +20,11 @@ from rest_framework import viewsets
 #     return Response(serializer.data)
 
 
+# class LoginView(TokenObtainPairView):
+#     serializer_class = MyTokenObtainPairSerializer
+
 class RegisterUserAPIView(generics.CreateAPIView):
-  permission_classes = (AllowAny,)
+  permission_classes = [AllowAny]
   serializer_class = RegisterSerializer
 
 
@@ -30,6 +34,7 @@ class UserView(viewsets.ModelViewSet):
 
 
 class ProfileView(viewsets.ModelViewSet):
+    # permission_classes = [DjangoModelPermissions]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 

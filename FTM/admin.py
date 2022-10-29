@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, WorkExp, Reviews
+from .models import Profile, WorkExp, Reviews, Requests
 
 
 # Register your models here.
@@ -13,3 +13,4 @@ class ProfileList(admin.ModelAdmin):
 admin.site.register(Profile)
 admin.site.register(WorkExp)
 admin.site.register(Reviews)
+admin.site.register(Requests)

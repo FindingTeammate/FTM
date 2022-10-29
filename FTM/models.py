@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from datetime import date
 
-from django.template.backends import django
+# from django.template.backends import django
 
 User = get_user_model()
 
@@ -36,5 +36,9 @@ class Reviews(models.Model):
     comments = models.TextField(blank=False)
     ratings = models.IntegerField(default=0)
     endorsements = models.CharField(max_length=100)
+
+
+class Requests(models.Model):
+    user = models.ManyToManyField(Profile, related_name='request', null=True)
 
 
