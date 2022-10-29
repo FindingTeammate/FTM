@@ -18,6 +18,7 @@ urlpatterns = [
     path('register/', views.RegisterUserAPIView.as_view(), name = "register"),
     path('get-profile/', views.GetProfile.as_view(), name = 'get-profile'),
     path('api-auth/', include('rest_framework.urls')),
+    path('login/', views.LoginView.as_view(), name='login'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
