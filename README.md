@@ -10,4 +10,4 @@ URLs:
 4. Work Experience: /api/workexp
 5. Reviews: /api/reviews
 6. Register: /register
-7. Login: /api/token
+7. Login: /login
