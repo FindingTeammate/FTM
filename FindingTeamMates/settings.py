@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'friendship',
 ]
 
 REST_FRAMEWORK = {
@@ -54,6 +55,15 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+
+REST_FRIENDSHIP = {
+   'PERMISSION_CLASSES': [
+      'rest_framework.permissions.IsAuthenticated',
+   ],
+   'USER_SERIALIZER': 'friendship.serializers.FriendSerializer',
+},
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
