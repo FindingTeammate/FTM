@@ -10,6 +10,7 @@ user = router.register("user",views.UserView)
 router.register("profile", views.ProfileView)
 router.register("workExp", views.WorkExpView)
 router.register("reviews", views.ReviewsView)
+router.register('friends', views.FriendViewSet, 'friend')
 
 urlpatterns = [
     path('api/', include(router.urls), name = 'create-profile'),
