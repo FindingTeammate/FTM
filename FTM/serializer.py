@@ -24,14 +24,26 @@ class RegisterSerializer(serializers.ModelSerializer):
   password = serializers.CharField(
     write_only=True, required=True, validators=[validate_password])
   password2 = serializers.CharField(write_only=True, required=True)
+  tokens = serializers.SerializerMethodField()
   class Meta:
     model = User
     fields = ('id','username', 'password', 'password2',
-         'email', 'first_name', 'last_name')
+         'email', 'first_name', 'last_name', 'tokens')
     extra_kwargs = {
       'first_name': {'required': True},
       'last_name': {'required': True}
     }
+
+  def get_tokens(self, user):
+      tokens = RefreshToken.for_user(user)
+      refresh = str(tokens)
+      access = str(tokens.access_token)
+      data = {
+          "refresh": refresh,
+          "access": access
+      }
+      return data
+
   def validate(self, attrs):
     if attrs['password'] != attrs['password2']:
       raise serializers.ValidationError(
@@ -42,12 +54,11 @@ class RegisterSerializer(serializers.ModelSerializer):
       username=validated_data['username'],
       email=validated_data['email'],
       first_name=validated_data['first_name'],
-      last_name=validated_data['last_name']
+      last_name=validated_data['last_name'],
     )
     user.set_password(validated_data['password'])
     user.save()
     return user
-
 
 class WorkExpSerializer(serializers.ModelSerializer):
     class Meta:
@@ -75,4 +86,32 @@ class UserSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class FriendSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'username', 'email')
+
+
+class FriendshipRequestSerializer(serializers.ModelSerializer):
+    to_user = serializers.CharField()
+    from_user = serializers.StringRelatedField()
+
+    class Meta:
+        model = FriendshipRequest
+        fields = ('id', 'from_user', 'to_user', 'message',
+                  'created', 'rejected', 'viewed')
+        extra_kwargs = {
+            'from_user': {'read_only': True},
+            'created': {'read_only': True},
+            'rejected': {'read_only': True},
+            'viewed': {'read_only': True},
+        }
+
+
+class FriendshipRequestResponseSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+
+    class Meta:
+        model = FriendshipRequest
+        fields = ('id',)
 
