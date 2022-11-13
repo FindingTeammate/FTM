@@ -64,6 +64,9 @@ REST_FRIENDSHIP = {
    'USER_SERIALIZER': 'friendship.serializers.FriendSerializer',
 },
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
