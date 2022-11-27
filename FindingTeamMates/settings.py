@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'friendship',
 ]
+
+# AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -54,6 +57,14 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+REST_FRIENDSHIP = {
+   'PERMISSION_CLASSES': [
+      'rest_framework.permissions.IsAuthenticated',
+   ],
+   'USER_SERIALIZER': 'friendship.serializers.FriendSerializer',
+},
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -150,3 +161,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# EMAIL_USE_TLS=True
+EMAIL_USE_SSL=True
+EMAIL_HOST='smtp.mail.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+print(EMAIL_HOST_USER)
