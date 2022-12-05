@@ -91,23 +91,10 @@ class GetProfile(APIView):
 
         return Response({'Bad Request': 'Code paramater not found in request'}, status=status.HTTP_400_BAD_REQUEST)
 
-
-# class FriendRequestView(viewsets.ModelViewSet):
-#     permission_classes = [DjangoModelPermissions]
-#     queryset = FriendRequest.objects.all()
-#     serializer_class = FriendRequestSerializer
-#     lookup_field = 'pk'
-#     def send_friend_request(request, userID):
-#         sender = request.user
-
+    
 User = get_user_model()
 
 REST_FRIENDSHIP = getattr(settings, "REST_FRIENDSHIP", None)
-
-
-# PERMISSION_CLASSES = getattr(import_string(c)
-#                       for c in REST_FRIENDSHIP["PERMISSION_CLASSES"])
-# USER_SERIALIZER = getattr(REST_FRIENDSHIP["USER_SERIALIZER"])
 
 
 class FriendViewSet(viewsets.ModelViewSet):
