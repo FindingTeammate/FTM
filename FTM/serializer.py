@@ -95,28 +95,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = "__all__"
 
-#
-# class FriendListSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = FriendList
-#         fields = "__all__"
-
-
-# class FriendRequestSerializer(serializers.ModelSerializer):
-#     receiver= serializers.CharField()
-#     sender = serializers.StringRelatedField()
-#
-#     class Meta:
-#         model = FriendRequest
-#         fields = "__all__"
-#
-#
-# class FriendshipRequestResponseSerializer(serializers.ModelSerializer):
-#     id = serializers.IntegerField()
-#
-#     class Meta:
-#         model = FriendRequest
-#         fields = ('id')
 
 class FriendSerializer(serializers.ModelSerializer):
     class Meta:
