@@ -9,5 +9,6 @@ URLs:
 3. Profile: /api/profile
 4. Work Experience: /api/workexp
 5. Reviews: /api/reviews
-6. Register: /register
-7. Login: /login
+6. Friends: /api/friends
+7. Register: /register
+8. Login: /login
